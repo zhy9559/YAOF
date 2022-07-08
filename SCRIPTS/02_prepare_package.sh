@@ -91,11 +91,11 @@ wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5
 popd
 # Patch FireWall 以增添 FullCone 功能
 # FW4
-mkdir package/network/config/firewall4/patches
-wget 'https://git.openwrt.org/?p=project/firewall4.git;a=patch;h=38423fae' -O package/network/config/firewall4/patches/990-unconditionally-allow-ct-status-dnat.patch
-#wget -P package/network/config/firewall4/patches/ https://github.com/wongsyrone/lede-1/raw/master/package/network/config/firewall4/patches/999-01-firewall4-add-fullcone-support.patch
-#sed -i 's/-1,3 +1,5/-2,3 +2,5/g' package/network/config/firewall4/patches/999-01-firewall4-add-fullcone-support.patch
-wget -P package/network/config/firewall4/patches/ https://raw.githubusercontent.com/immortalwrt/immortalwrt/ce3b9cc/package/network/config/firewall4/patches/001-firewall4-add-support-for-fullcone-nat.patch
+rm -rf ./package/network/config/firewall4
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/network/config/firewall4 package/network/config/firewall4
+#mkdir package/network/config/firewall4/patches
+#wget 'https://git.openwrt.org/?p=project/firewall4.git;a=patch;h=38423fae' -O package/network/config/firewall4/patches/990-unconditionally-allow-ct-status-dnat.patch
+#wget -P package/network/config/firewall4/patches/ https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/network/config/firewall4/patches/001-firewall4-add-support-for-fullcone-nat.patch
 #mkdir package/libs/libnftnl/patches
 #wget -P package/libs/libnftnl/patches/ https://github.com/immortalwrt/immortalwrt/raw/master/package/libs/libnftnl/patches/001-libnftnl-add-fullcone-expression-support.patch
 #sed -i '/PKG_LICENSE_FILES/a PKG_FIXUP:=autoreconf' package/libs/libnftnl/Makefile
